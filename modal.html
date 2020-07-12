@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Conjunto de Estilos -->
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+/*Preguntas respuestas*/
+.pregresp {
+  border: 1px solid #737070;
+  padding: 10px;
+  margin: 10px;
+  font: inherit;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+}
+/*Pregunta*/
+.pregunta {
+  color: #000000;
+}
+ul {
+  list-style-type: upper-alpha;
+}
+input{
+  color: #737070;
+} 
+/*Respuestas*/
+.respuestas {
+  color: #737070;
+}
+
+
+/******** El Modal  *********/
+.modal {
+  display: none; /* Hidden por defecto */
+  position: fixed; 
+  z-index: 1; /* Posicionar arriba */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Habilitar scroll si es necesario */
+  background-color: rgb(0,0,0); /* color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; 
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: #fefefe;
+  width: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+/* Boton para cerrar  */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.closebad{
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.closebad:hover,
+.closebad:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-header {
+  padding: 2px 16px;
+  background-color: #737070;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #737070;
+  color: white;
+}
+/* Animaciones */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+
+/****   Estilo de Botones  ******/
+@-webkit-keyframes stripe-slide {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+@keyframes stripe-slide {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+.btn {
+
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  line-height: normal;
+  cursor: pointer;
+  -moz-user-select: text;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 16px 36px 22px;
+  background-color: #fff;
+  color: #737070;
+  border: 2px solid #737070;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+
+}
+.btn:-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+.btn--stripe {
+  overflow: hidden;
+  position: relative;
+}
+.btn--stripe:after {
+  content: '';
+  display: block;
+  height: 7px;
+  width: 100%;
+  background-image: repeating-linear-gradient(45deg, #737070, #737070 1px, transparent 2px, transparent 5px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-top: 1px solid #737070;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-size: 7px 7px;
+}
+.btn--stripe:hover {
+  background-color: #737070;
+  color: #fff;
+  border-color: #000;
+}
+.btn--stripe:hover:after {
+  background-image: repeating-linear-gradient(45deg, #fff, #fff 1px, transparent 2px, transparent 5px);
+  border-top: 1px solid #000;
+  -webkit-animation: stripe-slide 12s infinite linear forwards;
+          animation: stripe-slide 12s infinite linear forwards;
+}
+.btn--large {
+  width: 50%;
+}
+.btn--radius {
+  border-radius: 36px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="pregresp ">
+    <li class="pregunta">¿Jesús es Dios?
+       <ul class="respuestas" class="upper-alpha">
+        <li><input  type="radio" name="preg1" value="1"  /> Sí</li>
+        <li><input  type="radio" name="preg1" value="2" /> No</li>
+       </ul>
+    </li>
+    <li class="pregunta">¿Quien se hizo esclavo de todos?
+       <ul class="respuestas" class="upper-alpha">
+        <li><input  type="radio" name="preg2" value="1"  /> Pedro</li>
+        <li><input  type="radio" name="preg2" value="2" /> Mateo</li>
+        <li><input  type="radio" name="preg2" value="3" /> Pinocho</li>
+        <li><input  type="radio" name="preg2" value="4" /> Jesús</li>
+       </ul>
+    </li>
+    <!-- Trigger/Abrir Modal -->
+    <button class="btn btn--stripe btn--radius center" id="myBtn">Finalizar</button>
+ 
+</div>
+
+
+<!-- Modal para respuesta Correcta -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>¡Felicitaciones!</h2>
+    </div>
+    <div class="modal-body">
+      <img src="https://image.freepik.com/vector-gratis/medalla-oro-3d-blanco-cinta-roja_69037-16.jpg" width="160"
+     height="160"> <!-- Medalla de recompensa , cambia la url y coloca la que deseas-->
+    </div>
+    <div class="modal-footer">
+      <h3>¡Ganastes una Medalla! Sigue adelante</h3>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal para respuesta incorrecta -->
+<div id="myModalBad" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="closebad">&times;</span>
+      <h2>Respuestas Incorrectas</h2>
+    </div>
+    <div class="modal-body">
+      <p>Lee nuevamente con atención</p>
+      <p>e intenta, pudes lograrlo...</p>
+    </div>
+    <div class="modal-footer">
+      <h3>¡Animo! recuerda: "La sabiduría y el conocimiento
+llenarán tu vida de alegría." Proverbios 2:10</h3>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Obtener modal bueno
+var modal = document.getElementById("myModal");
+// Obtener modal malo
+var modalBad = document.getElementById("myModalBad");
+
+// Obtener boton que abre modal
+var btn = document.getElementById("myBtn");
+
+// Botones para cerrar boton
+var span = document.getElementsByClassName("close")[0];
+var spanBad = document.getElementsByClassName("closebad")[0];
+
+// Logica para validar si las preguntas son correctas o incorrectas 
+btn.onclick = function() {
+  // Evaluar respuestas
+  if(typeof (Array.from(document.getElementsByName("preg1")).find(r => r.checked)) == 'undefined'){
+      alert("contesta la pregunta 1");
+      return;
+  }
+  if(typeof (Array.from(document.getElementsByName("preg2")).find(r => r.checked)) == 'undefined'){
+      alert("contesta la pregunta 2");
+      return;
+  }
+  let preg1 = Array.from(document.getElementsByName("preg1")).find(r => r.checked).value;
+  let preg2 = Array.from(document.getElementsByName("preg2")).find(r => r.checked).value;
+  if(preg1 == 1 && preg2 == 4){ //si en la pregunta 1 se selecciono la opcion 1 y en la pregunta 2 de selecciona la opcion 4 , el test es correcto
+    modal.style.display = "block";
+  }else{
+    modalBad.style.display = "block";
+  }
+}
+
+// Cerrar Modal de respuesta correcta
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// Cerrar Modal de respuesta invalida
+spanBad.onclick = function() {
+  modalBad.style.display = "none";
+}
+
+// Cuando el usaurio hace click fuera del modal cierra
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    modalBad.style.display = "none";
+  }
+}
+
+</script>
+
+</body>
+</html>
